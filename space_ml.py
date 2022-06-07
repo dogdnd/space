@@ -21,7 +21,7 @@ def run_ml() :
  
 
 
-    rocket = st.slider('예산', min_value=100000, max_value=10000000,step= 10000,)
+    rocket = st.slider('budget', min_value=100000, max_value=10000000,step= 10000,)
     month= st.select_slider('month',options=[1,2,3,4,5,6,7,8,9,10,11,12])
     weekday=st.select_slider('weekday',options= [0,1,2,3,4,5,6])
     hour=st.slider('hour',1,24)

@@ -10,6 +10,14 @@
 # GitHub Repository : (https://github.com/dogdnd/space)
 
 
+# data from kaggle : (https://www.kaggle.com/datasets/agirlcoding/all-space-missions-from-1957)
+
+# used ML : logistic regression
+
+
+
+
+
 <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
 
 <img src="https://img.shields.io/badge/streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white">

@@ -5,13 +5,13 @@
 
 # made by dogdnd
 
-# used library : pandas, numpy, streamlit, matplotlib.pyplot, seaborn,  joblib, iso3166, collections, plotly.express
 
 # GitHub Repository : (https://github.com/dogdnd/space)
 
 
 # data from kaggle : (https://www.kaggle.com/datasets/agirlcoding/all-space-missions-from-1957)
 
+### used library : pandas, numpy, streamlit, matplotlib.pyplot, seaborn,  joblib, iso3166, collections, plotly.express
 
 ### used ML : logistic regression test size=0.25
 

@@ -16,6 +16,7 @@ import seaborn as sns
 
 
 def run_eda() :
+    st.subheader('Space Mission EDA')
     df = pd.read_csv('data/space_mission.csv', thousands= ',')
     
     countries_dict = {
@@ -38,7 +39,7 @@ def run_eda() :
         'status', 
         'count'
     ]
-
+    
     fig = px.sunburst(
         sun, 
         path=[
@@ -99,17 +100,7 @@ def run_eda() :
         'money'
     ]
 
-    fig = px.bar(
-        data, 
-        x='company', 
-        y="money", 
-        orientation='v', 
-        title='Total money spent on missions', 
-        width=800,
-        height=600
-    )
-
-    st.plotly_chart(fig)
+  
 
     df['date'] = pd.to_datetime(df['Datum'])
     df['year'] = df['date'].apply(lambda datetime: datetime.year)
@@ -130,18 +121,7 @@ def run_eda() :
     av_money_df = av_money_df[av_money_df['avg']>0]
     av_money_df = av_money_df.reset_index()
 
-    fig = px.bar(
-        av_money_df, 
-        x='Company Name', 
-        y="avg", 
-        orientation='v', 
-        title='Average money per one launch', 
-        width=800,
-        height=600
-    )
- 
-
-    st.plotly_chart(fig)
+    
 
     money = df[df['Rocket']>0]
     money = money.groupby(['year'])['Rocket'].mean().reset_index()
@@ -371,16 +351,7 @@ def run_eda() :
         cold.loc[cold['country'] == 'Russian Federation', 'country'] = 'USSR'
         cold = cold[(cold['country'] == 'USSR') | (cold['country'] == 'USA')]
 
-        cold_menu = [
-            'Number of launches',
-            'USA vs USSR: launches year by year',
-            'USA vs USSR: number of companies year by year',
-            'USA vs USSR: failures year by year',
-            'Leaders by launches for every year (countries)',
-            'Leaders by launches for every year (companies)'
-
-        ]
-        choice_cold = st.selectbox('space war during coldwar(1991)', cold_menu)
+        
         
         
         

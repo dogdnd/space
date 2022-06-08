@@ -13,15 +13,15 @@
 # data from kaggle : (https://www.kaggle.com/datasets/agirlcoding/all-space-missions-from-1957)
 
 
-## used ML : logistic regression test size=0.25
+### used ML : logistic regression test size=0.25
 
-## used scaler : Standard scaler
+### used scaler : Standard scaler
 
-## used encoder : Lable encoder for 'Status Mission' 
+### used encoder : Lable encoder for 'Status Mission' 
 
-## ML train data columns : 'Rocket' , 'Month' , 'Weekday', 'Hour'
+### ML train data columns : 'Rocket' , 'Month' , 'Weekday', 'Hour'
 
-## ML predict data columns : 'Status Mission'
+### ML predict data columns : 'Status Mission'
 
 
 

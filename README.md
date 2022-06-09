@@ -7,7 +7,7 @@
 
 ## who?
 
-## data columns dercribe
+## data columns description
 
 ## how to
 
@@ -25,9 +25,13 @@
 
 * ML confusion matrix(ML 정확도)
 
-## EDA dashboard describe
+## EDA dashboard info
 
-## ML dashboard describe
+## ML dashboard info
+
+## issue
+
+## issue fix
 
 ## licence
 

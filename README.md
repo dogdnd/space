@@ -3,19 +3,19 @@
 
 # Space Business EDA and ML mission success predict Project
 
-# made by dogdnd
+## why?
 
+## who?
 
-# GitHub Repository : (https://github.com/dogdnd/space)
+## data columns dercribe
 
+## how to install
 
-# data from kaggle : (https://www.kaggle.com/datasets/agirlcoding/all-space-missions-from-1957)
-
-### used library : pandas, numpy, streamlit, matplotlib.pyplot, seaborn,  joblib, iso3166, collections, plotly.express
+### used library : pandas, numpy, streamlit, matplotlib.pyplot, seaborn,  joblib, iso3166, collections, plotly.express (add link, pip)
 
 ### used ML : logistic regression test size=0.25
 
-### used scaler : Standard scaler
+### used scaler : Standard scaler for which columns
 
 ### used encoder : Lable encoder for 'Status Mission' 
 
@@ -23,8 +23,17 @@
 
 ### ML predict data columns : 'Status Mission'
 
+### ML confusion matrix(ML 정확도)
 
+## EDA dashboard describe
 
+## ML dashboard describe
+
+## licence
+
+# GitHub Repository : (https://github.com/dogdnd/space)
+
+# data from kaggle : (https://www.kaggle.com/datasets/agirlcoding/all-space-missions-from-1957)
 
 
 <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fdogdnd&count_bg=%2379C83D&title_bg=%23555555&icon=ko-fi.svg&icon_color=%23FFFFFF&title=visit&edge_flat=false"/></a>

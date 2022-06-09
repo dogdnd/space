@@ -33,7 +33,7 @@
 
 ## issue fix
 
-## licence
+## reference
 
 * GitHub Repository : (https://github.com/dogdnd/space)
 

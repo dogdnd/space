@@ -40,6 +40,7 @@ def run_eda() :
         'count'
     ]
     
+    st.info('알고싶은 우주사업 관련 국가,기관을 클릭하면 하위항목으로 펼쳐집니다.')
     fig = px.sunburst(
         sun, 
         path=[
@@ -48,7 +49,7 @@ def run_eda() :
             'status'
         ], 
         values='count', 
-        title='Sunburst chart for all countries',
+        
         width=600,
         height=600
     )
@@ -86,11 +87,11 @@ def run_eda() :
     plot_map(
         dataframe=df, 
         target_column='Status Mission', 
-        title='Number of starts per country'
+        title='국가별 발사횟수를 색상으로 나타낸 맵'
     )
 
     fail_df = df[df['Status Mission'] == 'Failure']
-    plot_map(fail_df, 'Status Mission', 'Number of Fails per country')
+    plot_map(fail_df, 'Status Mission', '국가별 실패횟수를 색상으로 나타낸 맵')
 
     data = df.groupby(['Company Name'])['Rocket'].sum().reset_index()
     data = data[data['Rocket'] > 0]
@@ -126,15 +127,7 @@ def run_eda() :
     money = df[df['Rocket']>0]
     money = money.groupby(['year'])['Rocket'].mean().reset_index()
 
-    fig = px.line(
-        money, 
-        x="year", 
-        y="Rocket",
-        title='Average money spent by year',
-        width=800
-    )
 
-    st.plotly_chart(fig)
 
     ds = df.groupby(['Company Name'])['year'].nunique().reset_index()
 
@@ -154,7 +147,7 @@ def run_eda() :
         data, 
         x="year", 
         y="starts", 
-        title='Dynamic of top 5 companies by number of starts', 
+        title='TOP 5 우주사업 기관들의 발사기록', 
         color='company'
     )
 
@@ -171,7 +164,7 @@ def run_eda() :
         x="year", 
         y="launches", 
         color='country', 
-        title='Leaders by launches for every year (countries)'
+        title='년도별 최다 로켓발사(국가)'
     )
 
     st.plotly_chart(fig)
@@ -186,13 +179,16 @@ def run_eda() :
         x="year", 
         y="launches", 
         color='company', 
-        title='Leaders by launches for every year (companies)',
+        title='년도별 최다 로켓발사(기관)',
         width=800
     )
 
     st.plotly_chart(fig)
 
-    choice_company= st.selectbox('select company', df['Company Name'].unique())
+
+    st.info('기관별 발사현황 조회')
+
+    choice_company= st.selectbox('기관 선택', df['Company Name'].unique())
 
     data = df[df['Company Name'] == choice_company]
     data = data.groupby(['year'])['Company Name'].count().reset_index()
@@ -207,38 +203,22 @@ def run_eda() :
         data, 
         x="year", 
         y="launches", 
-        title='Launches per year for {}'.format(choice_company)
+        title='{}의 년도별 발사현황'.format(choice_company)
     )
 
     st.plotly_chart(fig)
 
 
 
-    time_menu = ['year','month','hour','weekday']
-    time_choice = st.selectbox('launch by time select', time_menu)
+    st.info('시간대별 발사현황 확인')
+
+
+    time_menu = ['month','hour','weekday']
+    time_choice = st.selectbox('시간대 선택', time_menu)
     
+    
+
     if time_choice == time_menu[0] :
-
-
-        ds = df['year'].value_counts().reset_index()
-
-        ds.columns = [
-            'year', 
-            'count'
-        ]
-
-        fig = px.bar(
-            ds, 
-            x='year', 
-            y="count", 
-            orientation='v', 
-            title='Missions number by year', 
-            width=800
-        )
-
-        st.plotly_chart(fig)
-
-    if time_choice == time_menu[1] :
         ds = df['month'].value_counts().reset_index()
 
         ds.columns = [
@@ -251,13 +231,13 @@ def run_eda() :
             x='month',
             y="count", 
             orientation='v', 
-            title='Missions number by month', 
+            title='월별 발사현황 체크', 
             width=800
         )
 
         st.plotly_chart(fig)
 
-    if time_choice == time_menu[2] :
+    if time_choice == time_menu[1] :
         ds = df['hour'].value_counts().reset_index()
 
         ds.columns = [
@@ -270,13 +250,13 @@ def run_eda() :
             x='hour', 
             y="count", 
             orientation='v',
-            title='Missions number by hour', 
+            title='시간별 발사현황 체크', 
             width=800
         )
 
         st.plotly_chart(fig)
 
-    if time_choice == time_menu[3] :
+    if time_choice == time_menu[2] :
         ds = df['weekday'].value_counts().reset_index()
 
         ds.columns = [
@@ -289,7 +269,7 @@ def run_eda() :
             x='weekday', 
             y="count", 
             orientation='v',
-            title='Missions number by weekday', 
+            title='요일별 발사현황 체크', 
             width=800
         )
 
@@ -297,7 +277,9 @@ def run_eda() :
 
 
 
-    choice_year = st.slider('select year',min_value=1957, max_value=2020)
+
+    st.info('최근 10년간 우주사업 기관별 발사 현황')
+    choice_year = st.slider('select year',min_value=2010, max_value=2020)
     data = df.groupby(['Company Name', 'year'])['Status Mission'].count().reset_index()
 
     data.columns = [
@@ -307,43 +289,22 @@ def run_eda() :
     ]
 
     data = data[data['year']==choice_year]
+
+    
     fig = px.bar(
         data, 
         x="company", 
         y="starts", 
-        title='Number of starts for year', 
+        title='발사 현황', 
         width=800
     )
 
     st.plotly_chart(fig)
 
-   
-
-    data = df[df['Status Mission']=='Failure']
-    data = data.groupby(['Company Name', 'year'])['Status Mission'].count().reset_index()
-
-    data.columns = [
-        'company', 
-        'year', 
-        'starts'
-    ]
-
-    data = data[data['year']==choice_year]
-
-    fig = px.bar(
-        data, 
-        x="company", 
-        y="starts", 
-        title='Failures by year', 
-        width=600
-    )
-
-    st.plotly_chart(fig)
-
-    
 
 
-    if st.button('space war between USA and USSR during cold war') :
+    st.info('냉전시기 미국과 소련의 우주전쟁')
+    if st.checkbox('그래프 보기') :
 
         cold = df[df['year'] <= 1991]
         cold['country'].unique()
@@ -366,7 +327,7 @@ def run_eda() :
             ds, 
             names='contry', 
             values="count", 
-            title='Number of launches', 
+            title='USA vs USSR 총 발사 현황', 
             width=500
         )
 
@@ -380,7 +341,7 @@ def run_eda() :
             x="year", 
             y="launches", 
             color='country', 
-            title='USA vs USSR launches by year',
+            title='USA vs USSR 년도별 발사현황',
             width=800
         )
         st.plotly_chart(fig)
@@ -395,7 +356,7 @@ def run_eda() :
             x="year", 
             y="failures", 
             color='country', 
-            title='USA vs USSR failures by year', 
+            title='USA vs USSR 년도별 실패현황', 
             width=800
         )
 
@@ -411,7 +372,7 @@ def run_eda() :
             x="year", 
             y="companies", 
             color='country', 
-            title='USA vs USSR: number of companies year by year',
+            title='USA vs USSR 년도별 민간우주기관 보유현황',
             width=800
         )
 

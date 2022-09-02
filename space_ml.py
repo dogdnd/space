@@ -17,6 +17,8 @@ import joblib
 
 
 def run_ml() :
+
+    st.subheader('ML을 활용한 우주사업 예측모델')
     df = pd.read_csv('data/space_mission.csv', thousands= ',')
  
 

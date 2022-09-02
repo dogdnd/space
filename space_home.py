@@ -13,7 +13,7 @@ def run_home() :
     with row3_1:
         st.markdown("made by dogdnd")
         st.markdown("used library : pandas, numpy, streamlit, matplotlib.pyplot, seaborn, joblib, iso3166, collections, plotly.express")
-        st.markdown("[GitHub Repository](https://github.com/dogdnd/my_project)")
+        st.markdown("[GitHub Repository](https://github.com/dogdnd/space)")
 
 
     st.image('https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Space_Shuttle_Columbia_launching.jpg/1024px-Space_Shuttle_Columbia_launching.jpg')
